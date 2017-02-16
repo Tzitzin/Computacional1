@@ -1,0 +1,152 @@
+\documentclass[12pt]{article}
+\usepackage[spanish]{babel}
+\usepackage{natbib}
+\usepackage{url}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{subfig}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{vmargin}
+\usepackage{mathtools}
+\usepackage{amssymb} 
+\usepackage{enumitem}
+\usepackage[rightcaption]{sidecap}
+\usepackage{graphicx}
+
+\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
+
+
+\title{Act 3: Iniciándose en Python} % Título
+\author {Alumna: Chávez Gutiérrez Yanneth Tzitzin \\ Profesor: Carlos Lizárraga Celaya. }											% Autores
+
+
+\makeatletter  
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date										
+\makeatother
+
+\pagestyle{fancy}
+\fancyhf{} %Si quieres ponerle otro encabezado/pie de pagina%
+\lhead{\thetitle}
+\cfoot{\thepage}
+\usepackage{setspace}
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}
+	\centering
+    \vspace*{0.5 cm}
+\includegraphics[scale = 0.4]{logo.png}\\% University Logo
+    \textsc{\Large Universidad de Sonora}\\[1.0 cm]	% University Name
+	\textsc{\Large División de Ciencias Exactas y Naturales}\\[0.5 cm]				% Course Code
+	\textsc{\large Física computacional}\\[0.5 cm]
+   \textsc {14 de febrero del 2017} 	
+\rule{\linewidth}{0.2 mm} \\[0.4 cm]
+	{ \huge \bfseries \thetitle}\\
+	\rule{\linewidth}{0.2 mm} \\[0.5 cm]
+	
+	\begin{minipage}{\textwidth}
+		\begin{flushleft} 
+        \begin{center}
+		%	\emph{\Large Alumna:} \large \\
+			\theauthor
+             \end{center}
+			\end{flushleft}
+	\end{minipage}\\[1 cm]
+	
+ 
+	\vfill
+	
+\end{titlepage}
+\pagebreak
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Breve resumen}
+En este reporte se introdujo lo que es Python, el cual es un lenguaje de programación interpretado. Se nos explico cómo hacer uso de él mediante jupyter notebooks y se busco como utilizarlo para el analisis de datos en la práctica. 
+\section{Introducción}
+Con base a los datos descargados del 2016 en analisis de la atmósfera en la ciudad de Chihuahua, se utilizaron comandos de la terminal para extraer sólo los valores 00Z y 12Z del archivo anual, de las siguientes variables: CAPE, cantidad de Agua Precipitable, y temperatura. Despues de hacer uso de esto, se utilizo Emacs para limpiar nuestro archivo y tenerlo listo para editarlo con jupyter notebooks. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Resultados}
+\subsection{Tablas de datos}
+Al tener los datos listos para abrirlos en python, abrimos la terminal para correr jupyter notebook. De aqui nos abrirá una pestaña en el navegador y tenemos que correr los sig comandos para importar las bibliotecas que vamos a utilizar.
+\begin{verbatim}
+import pandas as pd
+import numpy as np
+import matplotlib as plt
+df = pd.read_csv("/home/01010100/TZITZIN/Computacional/Act_3/12zanual.csv",
+names=['Fecha','CAPE','PW']")
+\end{verbatim}
+De esta forma anunciamos el archivo a utilizar y lo que representa cada columna en el archivo .csv \\
+Y aplicando las siguientes funciones básicas (data frame) se describen las salidas a la tabla:
+\begin{verbatim}
+df.head(20),
+df.describe()
+Y usando df.apply(lambda x: sum(x.isnull()),axis=0) en Python, 
+encontraremos los valores faltantes en el archivo.
+    \end{verbatim}
+\underline{Generandose las siguientes tablas:}\\
+
+\includegraphics[scale = 0.8]{tabla1.png}
+\includegraphics[scale = 0.8]{tabla2.png}
+
+\section{Variables CAPE}
+\includegraphics[scale = 0.8]{capebien.png}
+
+\underline{Se creo la gráfica con los sig comandos:}
+\begin{verbatim}
+df.columns  
+matplotlib inline
+df.hist(u'CAPE',bins=20)
+\end{verbatim}
+
+\underline{Para generar el diagrama de caja, se utilizo el sig comando:}
+\begin{verbatim}
+df.boxplot(column=u'CAPE')
+\end{verbatim}
+\includegraphics[scale = 0.8]{hist.png} \\
+\underline{Graficando el diagrama de caja para cada mes con el sig comando: obtenemos}
+\begin{verbatim}
+df.boxplot(column=u'CAPE',by=u'month')
+\end{verbatim}
+\includegraphics[scale = 0.8]{capemen.png} \\
+
+Mediante esta grafica nos podemos dar cuenta de por qué los datos de caja del año salen tan feos, los primeros meses tienen datos de 0 y hasta Junio se presentan datos CAPE.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagebreak
+\section{Precipitable water}
+\underline{Gráfico de la variable Precipitable Water (PW)}
+
+\includegraphics[scale = 0.8]{pwbien.png} \\
+\underline{y graficando el diagrama de caja para PW tenemos:}
+
+\includegraphics[scale = 0.8]{cajapw.png} \\
+\pagebreak
+
+\underline{Graficando el diagrama de caja para cada mes con el sig comando: obtenemos}
+\begin{verbatim}
+df.boxplot(column=u'PW',by=u'month')
+\end{verbatim}
+\includegraphics[scale = 0.8]{pwmen.png} \\
+Para PW se obtuvieron más datos, fue constante y por eso podemos observar esta distribucion y apreciar el comportamiento de los datos y como por los meses de junio a septiembre hubo más actividad. 
+
+
+\section{Conclusión}
+En esta práctica se analizaron los datos del archivo 12zanual.csv y con ayuda de Python y series de comandos, poder interpretar esos datos mediante representaciones gráficas. Utilizando el comando sed para organizar nuestros datos en la terminal, fue más facil. Ya que sed se encarga de buscar cierta palabra clave, y con esas palabras identificadas en el archivo, seria más facil eliminar los datos de esas secciones. Una vez elimidas, se abrio el archivo en Emacs para por una serie de comandos remplazar las partes del documento que nos eran inecesarias para solo dejar las columnas con los datos de los dias de CAPE y PW. \\
+Al terminar, se utilizo Python para el manejo de tablas y gráficas de estos datos. Utilizando los comandos que se describen en la práctica, se generaron. Una observacion, es que al hacer el diagrama de caja de los datos CAPE anuales, se observo mucha dispersión y es por esto que se muestran en su mayoria puntos negros que representan ceros en nuestra muestra. 
+\section{Referencias}
+(1) http://weather.uwyo.edu/upperair/sounding.html \\
+(2) http://computacional1.pbworks.com/w/page/115266988/
+\\Actividad\%203\%20(2017-1) \\
+(3) http://stackoverflow.com/questions/4396974/sed-or-awk-delete-n-lines-following-a-pattern
+
+
+\end{document}
