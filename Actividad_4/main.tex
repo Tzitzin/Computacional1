@@ -1,0 +1,230 @@
+\documentclass[12pt]{article}
+\usepackage[spanish]{babel}
+\usepackage{natbib}
+\usepackage{url}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{subfig}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{vmargin}
+\usepackage{mathtools}
+\usepackage{amssymb} 
+\usepackage{enumitem}
+\usepackage[rightcaption]{sidecap}
+\usepackage{graphicx}
+
+\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
+
+
+\title{Act 4 Física Computacional:\\Visualizando datos con Pandas y Matplotlib} % Título
+\author {Alumna: Chávez Gutiérrez Yanneth Tzitzin \\ Profesor: Carlos Lizárraga Celaya. }											% Autores
+
+
+\makeatletter  
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date										
+\makeatother
+
+\pagestyle{fancy}
+\fancyhf{} %Si quieres ponerle otro encabezado/pie de pagina%
+\lhead{\thetitle}
+\cfoot{\thepage}
+\usepackage{setspace}
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}
+	\centering
+    \vspace*{0.5 cm}
+\includegraphics[scale = 0.4]{logo.png}\\% University Logo
+    \textsc{\Large Universidad de Sonora}\\[1.0 cm]	% University Name
+	\textsc{\Large División de Ciencias Exactas y Naturales}\\[0.5 cm]				% Course Code
+	\textsc{\large Física computacional}\\[0.5 cm]
+   \textsc {28 de febrero del 2017} 	
+\rule{\linewidth}{0.2 mm} \\[0.4 cm]
+	{ \huge \bfseries \thetitle}\\
+	\rule{\linewidth}{0.2 mm} \\[0.5 cm]
+	
+	\begin{minipage}{\textwidth}
+		\begin{flushleft} 
+        \begin{center}
+		%	\emph{\Large Alumna:} \large \\
+			\theauthor
+             \end{center}
+			\end{flushleft}
+	\end{minipage}\\[1 cm]
+	
+ 
+	\vfill
+	
+\end{titlepage}
+\pagebreak
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Breve resumen}
+En esta práctica de física moderna se utilizaron herramientas de prácticas anteriores para poder interpretar los datos de la atmósfera en diferentes regiones. Y haciendo uso de estos datos, se representó graficamente metiante la biblioteca en Python de Matplotlib y despues haciendo uso de Tephi de recreo un tefigrama representando los datos de la atmósfera para cierta ciudad y hora específicos.
+\section{Introducción}
+Para la realización de esta prática, se analizaron datos del 15 de febrero en la cuidad de Chihuahua, Chihuahua a la hora 12Z. Los datos se obtuvieron de "Atmospheric Sounding" de la universidad de Wyoming. \\
+\linebreak Habiendo descargado los datos de este día, se trabajó con ellos para obtener representaciones graficas del comportamiento de los datos. Haciendo uso de las bibliotecas de Python: \textit{Matplotlib} e instalango \textit{Tephi}, un paquete que ayuda a producir tefigramas. Los cuales son diagramas meteorológicos en el que se representa, mediante coordenadas, las temperaturas absolutas y los logaritmos neperianos de las potenciales. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Resultados}
+\subsection{Primera parte: Utilizando Matplotlib}
+Con la ayuda de Python y la biblioteca de gráficas \textit{Matplotlib} se realizaron las siguientes graficas para interpretar los datos. 
+%\begin{verbatim}
+%y=df_clean[u'TEMP'] ---------------------> Define los datos que se usaran en Y
+%x=df_clean[u'HGHT'] ---------------------> Define los datos que se usaran en X
+%mplt.plot(x,y) 
+%mplt.grid(True)
+%pl.xlabel('Altura (m)') -----------------------> Etiquetas eje X
+%pl.ylabel('Temperatura (C)') ------------------> Etiquetas eje Y
+%pl.title('Temperatura (ºC) vs. Altura (m)')----> Título gráfica
+%pl.show() -------------------------------------> muestra la gráfica
+%\end{verbatim}
+
+\pagebreak
+\subsection*{Presión (hPa) vs. Altura (m)}
+\begin{center}
+\includegraphics[scale = 0.8]{presionvsaltura.png}
+\end{center}
+Podemos notar como varia la presión conforme a la altura. Entre mayor sea la altura, menor presión y entre menor sea la altura, mayor presión. \linebreak
+\underline{Comandos utilizados:}
+\begin{verbatim}
+from pylab import figure, show, legend, xlabel, ylabel
+import numpy as np
+import matplotlib.pyplot as mplt
+from matplotlib import rc
+y=df_clean[u'Pres']
+x=df_clean[u'HGHT']
+mplt.plot(x,y)
+mplt.grid(True)
+pl.xlabel('Altura (m)')
+pl.ylabel('Presión (hPa)')
+pl.title('Presión (hPa) vs. Altura (m)')
+pl.show()
+
+\end{verbatim}
+\subsection*{Temperatura (ºC) vs. Altura (m)}
+\begin{center}
+\includegraphics[scale = 0.8]{temperaturavsaltura.png}
+\end{center}
+Esta gráfica nos muestra las variaciones de temperatura conforme a la altura, podemos ver que a no tan grandes variaciones de altura, la temperatura muestra muchos cambios. 
+\\
+\underline{Comandos utilizados:}
+\begin{verbatim}
+y=df_clean[u'TEMP']
+x=df_clean[u'HGHT']
+mplt.plot(x,y)
+mplt.grid(True)
+pl.xlabel('Altura (m)')
+pl.ylabel('Temperatura (C)')
+pl.title('Temperatura (ºC) vs. Altura (m)')
+pl.show()
+\end{verbatim}
+
+\subsection*{Temperatura de Rocío (DWPT ºC) vs. Altura (m)}
+\begin{center}
+\includegraphics[scale = 0.8]{DWPTvsaltura.png}
+\end{center}
+La temperatura de rocío es la temperatura a la que empieza a condensarse el vapor de agua contenido en el aire, produciendo rocío, neblina, cualquier tipo de nube o, en caso de que la temperatura sea lo suficientemente baja, escarcha. Podemos ver que a comparacion a la gráfica anterior, esta no muestra cambios muy drasticos de la temperatura conforme a la altura.
+\\
+\underline{Comandos utilizados:}
+\begin{verbatim}
+y=df_clean[u'DWPT']
+x=df_clean[u'HGHT']
+mplt.plot(x,y)
+mplt.grid(True)
+pl.xlabel('Altura (m)')
+pl.ylabel('Temperatura de Rocío (DWPT ºC)')
+pl.title('Temperatura de Rocío (DWPT ºC) vs. Altura (m)')
+pl.show()
+\end{verbatim}
+\subsection*{Gráficas de Temperatura (Rosa) y Temperatura de Rocío (Verde) vs altura en una sola gráfica}
+\begin{center}
+\includegraphics[scale = 0.8]{dosDT.png}
+\end{center}
+Aquí simplemente se trata de comparar/contrastar los cambios notables de Temp de rocio y Temperatura contra altura en una sola gráfica. La linea azul representa la Temperatura de Rocio, y la linea morada la Temperatura.
+\\
+\underline{Comandos utilizados:}
+\begin{verbatim}
+y=df_clean[u'TEMP']
+x=df_clean[u'HGHT']
+plt.plot(x,y, label='Temp vs altura',color='red')
+mplt.grid(True)
+y=df_clean[u'DWPT']
+x=df_clean[u'HGHT']
+plt.plot(x,y, label='DWPT vs altura',color='green')
+plt.grid(True)
+mplt.grid(True)
+pl.title('Temperatura y Temperatura de Rocío vs altura')
+plt.legend( loc='upper right', numpoints = 1 )
+pl.show()
+\end{verbatim}
+\section*{Resultados}
+\subsection{Segunda parte: Utilizando Tephi}
+\underline{Pasos a seguir}:
+
+\begin{enumerate}
+\item Primero desde el repositorio en Github, se realizo un Fork del repositorio tephi. 
+\item Se creo la carpeta Actividad 4 en la computadora para realizar esta actividad. 
+\item Se entro a la carpeta desde una terminal, y se clono el repositorio de tephi en Github.com, utilizando el comando: git clone y definiendo la carpeta donde se encuentra. 
+\begin{verbatim}
+git clone https://github.com/Tzitzin/tephi.git
+\end{verbatim}
+\item Se requerio instalar la biblioteca tephi en el entorno de programación, utilizando el comando pip. como:
+\begin{verbatim}
+pip install --user /home/01010100/TZITZIN/Computacional/Act_4/tephi
+\end{verbatim}
+Se tuvo que definir la carpeta en la que especificamente se encontraba tephi, pues anterior mente al solo utilizar el comando pip install, marcaba error. 
+\end{enumerate}
+Se selecciono un día y hora específica de un sondeo del sitio analizado y descargaron los datos en un archivo de texto. Con esos datos se busco obtener una gráfica similar a las que se producen automáticamente con la opción PDF: Skew-T del sitio de la Universidad de Wyoming.  
+A continuacion se muestra la gráfica producida por el sitio de la Universidad de Wyoming:
+\section*{Gráfica Wyoming:} 
+\begin{center}
+\includegraphics[scale = 0.4]{gra.png}
+\end{center}
+
+Para poder obtener esta grafica pero ahora haciendo uso de \textbf{tephi}, se importaron las sig bibliotecas de python: 
+\begin{verbatim}
+import matplotlib.pyplot as plt
+import os.path
+import tephi as tph
+\end{verbatim}
+Y para graficar los datos. Se tuvieron que poner los datos en pares, pues tephi no leia el documento con más de dos columnas. En Emacs se filtraron los datos dejando solamente en un archivo: "Presión" vs "Temp" y otro archivo con "Presión" vs "DWPT" que son los datos que se representarian en el Tephigrama. Despues de hacer esto, ya podria leerlos tephi usando: 
+\pagebreak
+\begin{verbatim}
+dew_point = pd.read_csv("/home/01010100/TZITZIN/Computacional/Act_4/presDWPT1.csv", names=["PRES","DWPT"])
+dry_bulb = pd.read_csv("/home/01010100/TZITZIN/Computacional/Act_4/prestemp1.csv", names=["PRES","TEMP"])
+tpg = tph.Tephigram()
+tpg.plot(dew_point, label="Pres vs DWPT", color="blue")
+tpg.plot(dry_bulb, label="Pres vs TEMP", color="green")
+plt.show()
+\end{verbatim}
+Y mediante esos comandos se obtuvo la siguiente gráfifca:
+\section*{Gráfica Tephi}
+\begin{center}
+\includegraphics[scale = 0.7]{tefigrama.png}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagebreak
+\section{Conclusiónes}
+Usando comandos de prácticas anteriores, pudimos desarrollar las gráficas utilizando Python y su biblioteca de Matplotlib. Es una manera muy sencilla de leer datos de un solo archivo, interpretar los datos y apartir de ellos deducir comportamientos sobre la base de datos utilizada.
+Usar tephi en un inicio fue una experiencia dificil, me dio muchos problemas primero al intalar tephi desde la terminal y despues de eso, importar tephi en Python. Y también a la hora de lograr todo eso, tephi no leia archivos con más de dos columnas, dio mucho problema el hecho de tener que estar separando tus datos en datos pares para que los leyera el programa, en vez de leer todo el archivo y tu como usuario asigrar las columnas a utilizar. Una ventaja de todo esto fue que el tephigrama al final sale muy bonito, y más completo que el de la universidad, pues al parecer ellos recortaron datos o recortaron la gráfica pues una de las diferencias fue esa, que la grafica producida con tephi muestra poco más de informacion. 
+\section{Referencias}
+\begin{enumerate}
+\item http://weather.uwyo.edu/upperair/sounding.html
+\item http://computacional1.pbworks.com/w/page/115266988/
+\item  http://stackoverflow.com/questions/4396974/sed-or-awk-delete-n-lines-following-a-pattern
+\item Tefigramas: http://tephi.readthedocs.io/en/latest/plotting.html
+\\Actividad\%203\%20(2017-1) 
+\end{enumerate}
+\end{document}
