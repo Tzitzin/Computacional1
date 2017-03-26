@@ -1,0 +1,220 @@
+\documentclass[12pt]{article}
+\usepackage[spanish]{babel}
+\usepackage{natbib}
+\usepackage{url}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{subfig}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{vmargin}
+\usepackage{mathtools}
+\usepackage{amssymb} 
+\usepackage{enumitem}
+\usepackage[rightcaption]{sidecap}
+\usepackage{graphicx}
+
+\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
+
+
+\title{Act 5 Física Computacional: Mareas y corrientes} % Título
+\author {Alumna: Chávez Gutiérrez Yanneth Tzitzin \\ Profesor: Carlos Lizárraga Celaya. }											% Autores
+
+
+\makeatletter  
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date										
+\makeatother
+
+\pagestyle{fancy}
+\fancyhf{} %Si quieres ponerle otro encabezado/pie de pagina%
+\lhead{\thetitle}
+\cfoot{\thepage}
+\usepackage{setspace}
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}
+	\centering
+    \vspace*{0.5 cm}
+\includegraphics[scale = 0.4]{logo.png}\\% University Logo
+    \textsc{\Large Universidad de Sonora}\\[1.0 cm]	% University Name
+	\textsc{\Large División de Ciencias Exactas y Naturales}\\[0.5 cm]				% Course Code
+	\textsc{\large Física computacional}\\[0.5 cm]
+   \textsc {14 de marzo del 2017} 	
+\rule{\linewidth}{0.2 mm} \\[0.4 cm]
+	{ \huge \bfseries \thetitle}\\
+	\rule{\linewidth}{0.2 mm} \\[0.5 cm]
+	
+	\begin{minipage}{\textwidth}
+		\begin{flushleft} 
+        \begin{center}
+		%	\emph{\Large Alumna:} \large \\
+			\theauthor
+             \end{center}
+			\end{flushleft}
+	\end{minipage}\\[1 cm]
+	
+ 
+	\vfill
+	
+\end{titlepage}
+\pagebreak
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Breve resumen práctica}
+%**** CICESE: Ciudad del carmen, Campeche
+%**** NOAA: 
+En este ensayo se hablará un poco sobre las corrientes y mareas, y se nombrarán los 10 principales componentes armonicos de la marea, con el fin de que queden claros los conceptos a tratar, ya que se introducirán también a la práctica datos de corrientes marinas obtenidas de \textit{CICESE} y \textit{NOAA}, ambos centros dedicados a la investigación en Ciencias de la Tierra, Oceanología, física aplicada e investigaciones ambientales.
+
+Los datos con los que se trabajarán en las diferentes centros de investigación son los siguientes:
+
+\textbf{\textit{NOAA}}:  	
+\textit{Bermuda, St. Georges Island} 
+
+\textbf{\textit{CICESE}}: 
+\textit{Ciudad del carmen, Campeche} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{¿Qué son las mareas y las corrientes?}
+Las mareas son el levantamiento y el decaimiento de los niveles de aguas marinas, causados por la combinación de las fuerzas gravitacionales ejercidas por la luna, el sol y la rotacion terrestre. 
+
+Las \textbf{mareas} comienzan en el oceano y se mueven hasta la costa, variando el levantamiento o decaimiento de la marea dependiendo en donde nos encontremos o que día sea. Esto afectará a los niveles del agua, y qué tanto varian a lo largo del día.
+
+Por otro lado las \textbf{corrientes} ponen en movimiento al oceano, las mareas involucran el hecho de que el agua vaya hacia arriba y hacia abajo, en cambio las corrientes son las que generan que el agua vaya hacia atras y hacia adelante. Y éstas son controladas por ciertos factores, y las mareas son uno de ellos, el aire, la forma de la tierra, y hasta la temperatura del agua son factores que manipulan las corrientes. 
+
+
+A continuación analizaremos aspectos importantes a descatar sobre las mareas.
+
+\subsection{Caracteristicas de las mareas}
+Los cambios en las mareas se llevan a cabo en las siguientes etapas:
+%Sea level rises over several hours, covering the intertidal zone; flood tide.The water rises to its highest level, reaching high tide.Sea level falls over several hours, revealing the intertidal zone; ebb tide.The water stops falling, reaching low tide.
+
+\begin{itemize}
+\item El nivel del mar se eleva en ciertas horas, cumbriendo la zona Intermareal, llamado normalmente \textit{pleamar}
+\item El agua se eleva a su punto maximo, alcanzando la \textit{Marea alta}
+\item El nivel del mar cae durante algunas horas, dandose el \textit{Ebb tide}
+\item Que el agua deje de caer, se da la \textit{marea baja}.
+\end{itemize}
+
+\begin{center}
+\includegraphics[scale = 0.9]{Tide_overview_svg.png}
+\end{center}
+
+En la imagen podemos observar la variacion de las mareas causado por la luna, y cuándo podemos observar la marea alta. 
+
+\subsection{Constituyentes}
+Las constituyentes de las mareas son un resultado de multiples interacciones que llevan a cabo los cambios en la marea durante ciertos periodos de tiempo. Algunos de los principales constituyentes son la rotacion terrestre, la posición de la luna, y el sol relativo a la tierra, etc. Las variaciones que se llevan a cabo en periodos cortos de tiempo de menos de medio día, son llamados: \textit{Constituyentes armónicos}. Los ciclos de días, meses o años, son los periodos constituyentes largos.
+\pagebreak
+\subsection{El principal constituyente semi-durnial}
+Como se mencionó anteriormente, la luna es uno de los principales causantes de las mareas. Y con este hecho, podemos darnos una idea de como variaran los niveles de mar gracias a la interaccion gravitacional de la luna y la tierra. 
+
+La distancia cambiante de la luna con la tierra, afecta a las mareas altas. Cuando la luna esta en su punto más cerca a la tierra, se le llama perigeo, y el rango de mareas altas aumenta. Y cuando se encuentra en el apogeo, el rango decrese. Cada siete y medio ciclos completos de la luna el perigeo coincide con alguna luna llena o luna nueva causando las mareas perigeas de primavera con el rango más alto de mareas. Aunque esto causa efectos en la marea, la representacion de esta fuerza en las mareas terrestres es debil, ya que ocasiona variaciones de apenas pulgadas de diferencia.  
+\begin{center}
+\includegraphics[scale = 0.3]{st.png}
+\end{center}
+%%%%%%%%%%%%%%%%%%%%
+Como ya se menciono anteriormente, el sol también emplea un papel importante en la constitucion de las mareas. De hecho la fuerza gravitacional ejercida por el sol hacia la tierra es en promedio 179 veces más fuerte que la de la luna, pero este se encuentra 389 más lejos, es por eso que la influencia que tiene el sol en las mareas es de apenas 46\% de la influencia que tiene la luna en la tierra y sus mareas. 
+\pagebreak
+\subsection{La física en las mareas}
+Los centros de investigación ya mencionados, se encargan de checar las mareas, y ver qué tantas variaciones hay, tener una interpretación de los datos capturados y saber como se comporta la marea y corrientes para diferentes tiempos y localidades. Estos centros cuentan con cientificos que estan constantemente observando datos e interpretandolos, para con ello sacar provecho a esta información. Es por eso que la física es importante en la captura de datos y representación, ya que sus fenomenos se presentan de manera notoria en el proceso que hace que se lleven a cabo las maras, y las variaciones que pueden existir por estos mismos sobre ellas. 
+
+A continuación se mostrará una tabla con los principales constituyentes armónicos de las mareas:
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{||c|c|c|c||}
+\hline 
+\hline 
+%\multicolumn{7}{|c|}{Mediciones} \\ hline
+\multicolumn{1}{|c|}{Orden} & \multicolumn{1}{|c|}{Nombre} & \multicolumn{1}{|c|}{Símbolo} & \multicolumn{1}{c|}{Periodo (hr)} \\ 
+\hline \hline 
+1 & Principal lunar semidiurno &  $M_{2}$ & 12.42 \\ \hline
+2&  Principal solar semidiurno & $S_{2}$ & 12.00 \\ \hline
+3&  Lunar elítpico semidiurno & $N_{2}$ & 12.66 \\ \hline
+4&  Lunar diurno & $K_{1}$ & 23.93 \\ \hline
+5& Aguas poco profundas de principal lunar & $M_{4}$ & 6.21 \\ \hline
+6&  Lunar diurno & $O_{1}$ & 25.82 \\ \hline
+7& Aguas poco profundas de principal lunar & $M_{6}$ & 4.14 \\ \hline
+8& Aguas poco profundas terdiurno & $MK_{3}$ & 8.18 \\ \hline
+9& Aguas poco profundas de principal solar & $S_{4}$ & 6.00 \\ \hline
+10& Aguas poco profundas cuarto diurno & $MN_{4}$ & 6.27 \\ \hline
+
+\end{tabular}
+\end{center}
+\end{table}
+
+A continuación se presentarán las presentaciones graficas de los datos obtenidos para las localidades mencionadas:
+\pagebreak
+\section*{Resultados de la práctica}
+Datos que se trabajarón obtenidos de los centros de investigación de:
+
+\textbf{\textit{NOAA}}:  	
+\textit{Bermuda, St. Georges Island} \\
+Para Bermuda, St. Georges Island se descargaron datos del 06 febrero del 2017 al 09 de marzo del 2017 y se graficó como varia el nivel del agua durante este mes de datos. 
+\begin{center}
+\includegraphics[scale = 0.99]{B.png}
+\end{center}
+
+En el caso de graficar los datos de esta agencia, fue un poco más sencillo. Ya que la tabla proporcionada estaba organizada con una columna que incluia el formato de fecha dado de año, mes, dia y hora. Asi que solo se proporciono el comando para graficar esta columna, contra el nivel del agua para ese día y hora específico:
+\begin{verbatim}
+x=df["Date Time"]
+y=df["Water Level"]
+plt.title("Mareas en Bermuda, St. Georges Island, 06 febrero-09 marzo ")
+plt.ylabel('Nivel del agua (m)')
+plt.xlabel('Fecha')
+plt.grid(True)
+plt.plot(x,y)
+plt.show()
+\end{verbatim}
+
+\pagebreak
+\textbf{\textit{CICESE}}: 
+\textit{Ciudad del carmen, Campeche} \\
+Para la ciudad del carmen, se descargaron datos de todo un año del 2016. Con estos datos, se selecciono un mes y se graficaron los días contra el nivel del mar.
+
+\begin{center}
+\includegraphics[scale = 1]{CC.png}
+\end{center}
+En el caso de graficar los datos de ciudad Campeche, fue un poco más complicado, ya que CICESE proporciona los datos con columnas separadas para el año de datos recolectados, el día y la hora. En este caso se tuvo que utilizar un comando de python \textit{datetime} el cual es un comando que al darle ciertas columnas con datos, las agrupara dando formato de fecha y no habra problema al graficar. Para agrupar las columnas de Año, día, mes y hora se utilizo el siguiente comando datetime:
+\begin{verbatim}
+from datetime import datetime
+df['date']= df.apply(lambda x:datetime.strptime
+("{0} {1} {2} {3}".format(x[u'anio'],x[u'mes'], x[u'dia'], x[u'hora(utc)']),
+"%Y %m %d %H"),axis=1)
+\end{verbatim}
+Lo que se hizo fue generar una nueva columa llamada ''date" la cual tendria el formato de fecha asignado por las columas que se utilizaron que fueron las que se nombraron en el código, y se normbro que formato tenia cada una de ellas. 
+
+Con ello, se grafico de igual forma la columna ''date" y la columna de nivel de agua proporcionada:
+\begin{verbatim}
+x=df["date"]
+y=df["altura(mm)"]
+
+plt.title("Mareas en Ciudad del Carmen, Enero 2016 ")
+plt.ylabel('Nivel del agua (m)')
+plt.xlabel('Fecha')
+plt.grid(True)
+
+
+plt.plot(x,y)
+plt.show()
+\end{verbatim}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusiónes}
+En este ensayo se habló poco sobre los constituyentes de las mareas, y el papel importante que juegan. También sobre algunos centros dedicados a la investigación de esta rama, y pudimos con uso de Matplotlib recrear las tablas creadas por los centros, con los datos que proporcionan, se obtuvieron representaciones muy parecidas. También se introdujo un nuevo comando utilizado \textit{datetime} que hizo mucho más facil el proceso de agrupar datos de diferentes columnas, dado el formato necesario para graficar. 
+\pagebreak
+\section{Referencias}
+\begin{enumerate}
+\item Definición tides and currents \\
+http://oceanservice.noaa.gov/navigation/tidesandcurrents/
+\item Teoria de las mareas \\
+$https://en.wikipedia.org/wiki/Theory_of_tides$
+\item Mareas, wikipedia \\
+https://en.wikipedia.org/wiki/Tide
+\end{enumerate}
+\end{document}
